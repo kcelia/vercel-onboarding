@@ -32,8 +32,7 @@ export default async function Home() {
       </div>
       <h1>{data.temperature ?? "—"}°C</h1>
       <p>Preview deployment test</p>
-      <p>Preview deployment test</p>
-      <p>Preview deployment test</p>
+      <p>Preview deployment test - version 2</p>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </main>
   );
