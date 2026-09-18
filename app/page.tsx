@@ -8,13 +8,20 @@ async function getTemp() {
     CITY_LON: process.env.CITY_LON,
   });
 
-  const res = await fetch(`${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"}/api/weather`, { cache: "no-store" });
+  const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/weather`, { cache: "no-store" });
+
+
   return res.json();
 }
 
 export default async function Home() {
   const label = process.env.NEXT_PUBLIC_ENV_LABEL ?? "unset";
   const data = await getTemp();
+
   return (
     <main style={{ fontFamily: "system-ui", padding: 40 }}>
       <div style={{ padding: 12, background: label === "production" ? "#fee" : "#eef" }}>
