@@ -1,8 +1,3 @@
-
-if (!process.env.REQUIRED_THING) {
-  throw new Error("REQUIRED_THING is not set");
-}
-
 async function getTemp() {
   console.log("[env]", {
     VERCEL_ENV: process.env.VERCEL_ENV,
