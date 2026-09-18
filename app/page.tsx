@@ -11,6 +11,7 @@ async function getTemp() {
     NEXT_PUBLIC_ENV_LABEL: process.env.NEXT_PUBLIC_ENV_LABEL,
     CITY_LAT: process.env.CITY_LAT,
     CITY_LON: process.env.CITY_LON,
+    REQUIRED_THING: process.env.REQUIRED_THING,
   });
 
   const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
