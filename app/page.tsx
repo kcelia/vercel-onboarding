@@ -1,4 +1,13 @@
 async function getTemp() {
+  console.log("[env]", {
+    VERCEL_ENV: process.env.VERCEL_ENV,
+    VERCEL_URL: process.env.VERCEL_URL,
+    VERCEL_PROJECT_PRODUCTION_URL: process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    NEXT_PUBLIC_ENV_LABEL: process.env.NEXT_PUBLIC_ENV_LABEL,
+    CITY_LAT: process.env.CITY_LAT,
+    CITY_LON: process.env.CITY_LON,
+  });
+
   const res = await fetch(`${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"}/api/weather`, { cache: "no-store" });
   return res.json();
 }
