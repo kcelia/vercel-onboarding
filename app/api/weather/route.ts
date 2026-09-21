@@ -21,9 +21,17 @@ export async function GET() {
   const res = await fetch(
   `${base}/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m`,
   {
+
+    // headers: {
+    //   "X-API-Key": process.env.DATA_API_KEY ?? "",
+    // },
+
     headers: {
-      "X-API-Key": process.env.DATA_API_KEY ?? "",
-    },
+    // Send the fake key in a demonstration header.
+    // Do not use the provider's authentication header.
+    "X-Demo-API-Key": process.env.DATA_API_KEY ?? "",
+},
+
   }
   );
 
