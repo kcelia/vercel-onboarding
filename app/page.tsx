@@ -114,8 +114,7 @@ export default function Home() {
       </div>
 
       <h1>{temperature}</h1>
-      <p>Preview deployment test - with leaks</p>
-      <p>Preview deployment test - version 2</p>
+      <p>Preview deployment test - without leaks</p>
     </main>
   );
 }
