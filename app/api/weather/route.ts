@@ -28,11 +28,17 @@ export async function GET() {
   );
 
   if (!res.ok) {
-    return Response.json(
-      { error: `upstream ${res.status}` },
-      { status: 502 }
-    );
-  }
+  // Read the error details returned by the weather API.
+  const details = await res.text();
+
+  // Log the details on the server, without logging our API key.
+  console.error("Weather API error:", res.status, details);
+
+  return Response.json(
+    { error: `upstream ${res.status}` },
+    { status: 502 }
+  );
+}
 
   const data = await res.json();
 
