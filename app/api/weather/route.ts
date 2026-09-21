@@ -19,7 +19,12 @@ export async function GET() {
     process.env.WEATHER_API_BASE ?? "https://api.open-meteo.com/v1";
 
   const res = await fetch(
-    `${base}/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m`
+  `${base}/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m`,
+  {
+    headers: {
+      "X-API-Key": process.env.DATA_API_KEY ?? "",
+    },
+  }
   );
 
   if (!res.ok) {
