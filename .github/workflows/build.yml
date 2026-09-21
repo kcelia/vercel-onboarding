@@ -1,0 +1,38 @@
+name: Build check
+
+# Run when a pull request targets main.
+# Run again when new commits are pushed to that pull request.
+on:
+  pull_request:
+    branches: [main]
+
+# Allow the workflow to read the repository.
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+
+    # Use a Linux machine provided by GitHub.
+    runs-on: ubuntu-latest
+
+    steps:
+      # Download the repository onto the machine.
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      # Install Node.js to run npm commands.
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+
+      # Install the exact dependencies from package-lock.json.
+      - name: Install dependencies
+        run: npm ci
+
+      # Check that the application builds successfully.
+      - name: Build application
+        run: npm run build
