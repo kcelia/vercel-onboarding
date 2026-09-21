@@ -18,13 +18,16 @@ export default function Home() {
   useEffect(function () {
     // Define our function for requesting the weather.
     // "async" allows us to use "await".
+
+
+
     async function getTemp() {
       try {
         // Read the public environment variables.
         // Only use a FAKE API key for this exercise.
         const apiKey = process.env.NEXT_PUBLIC_DATA_API_KEY;
-        const lat = process.env.CITY_LAT;
-        const lon = process.env.CITY_LON;
+        const lat = process.env.NEXT_PUBLIC_CITY_LAT;
+        const lon = process.env.NEXT_PUBLIC_CITY_LON;
 
         // Check that all required variables exist.
         if (!apiKey || !lat || !lon) {
